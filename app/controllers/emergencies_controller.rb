@@ -5,7 +5,7 @@ class EmergenciesController < ApplicationController
     if @emergency.save!
       render status: 201, json: @emergency, serializer: EmergencySerializer
     else
-      render status: 422, json: { 'message' => @emergency.errors }
+      not_found_response(@emergency)
     end
   end
 
