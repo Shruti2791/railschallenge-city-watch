@@ -1,7 +1,8 @@
 class Emergency < ActiveRecord::Base
 
   # Associations
-  has_many :responders
+  has_many :emergencies_responders
+  has_many :responders, through: :emergencies_responders
   has_many :fire_responders, ->{ where(responders: { type: Responder.types[:fire] })}, through: :responders
   has_many :police_responders, ->{ where(responders: { type: Responder.types[:police] })}, through: :responders
   has_many :medical_responders, ->{ where(responders: { type: Responder.types[:medical] })}, through: :responders

@@ -3,5 +3,6 @@ class Responder < ActiveRecord::Base
   enum status: [:available, :on_duty, :unavailable]
 
   # Associations
-  has_many :emergencies
+  has_many :emergencies_responders
+  has_many :emergencies, through: :emergencies_responders
 end
